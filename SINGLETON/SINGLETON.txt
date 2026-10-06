@@ -1,0 +1,12 @@
+Patterns é arquitetura, nosso cliente é outro programador.
+
+O controle por instanciar objetos não é do programador, é meu.
+
+Se o programador pedir pra instanciar 2 coisas, será negado.
+
+SINGLETON: INSTANCIA UNICA
+
+o CONSTRUTOR é PRIVADO, somente instancia por DENTRO da classe.
+
+Usar um método get instancia que vai verificar se a instanciafoi criada, se sim, chama construtor privado, se não
+Retorna daonde veio, sem instanciar, visto q já foi instanciado.
