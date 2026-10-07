@@ -14,10 +14,10 @@ class BebidaFactory {
 Me responde em texto (sem código):
 
 Por que isso não é Factory Method?
-R: Pq no factory a ideia é nãu ter que usar IFs
+R: Porque o Factory Method define um método fábrica abstrato na superclasse (criador) e deixa cada subclasse criadora concreta decidir qual produto instanciar, usando herança e polimorfismo. Aqui existe um único método estático que concentra a decisão num if/else a partir de uma String ("cafe"/"cha"). Não há hierarquia de criadores nem sobrescrita: a escolha é feita por parâmetro, não pela classe que cria o objeto.
 
 Que padrão é esse na verdade?
-R: If e else, mas pra ser mais direto, um metodo "construtor".
+R: É uma Fábrica Simples (Simple Factory / Static Factory). Ela apenas encapsula a criação num único lugar com condicionais, mas não é um dos padrões GoF. O Factory Method de verdade usa criadores em hierarquia, com o método fábrica sobrescrito nas subclasses.
 
 O que falta pra virar Factory Method de verdade?
-R: eu não precisar passar como parametro se é cha ou cafe, e tirar os IFs.
+R: Transformar a criação num método abstrato de uma classe criadora abstrata (ex.: Cafeteria com criarBebida()) e criar subclasses concretas (CafeteriaCafe, CafeteriaCha) que sobrescrevem esse método retornando o produto certo (new Cafe(), new Cha()). O cliente então apenas escolhe a criadora concreta (new CafeteriaCafe()) e não passa tipo nem usa ifs. Assim, para adicionar uma bebida nova, basta criar uma nova subclasse, sem alterar o código existente (Open/Closed).
