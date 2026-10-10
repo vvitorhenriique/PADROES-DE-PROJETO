@@ -5,7 +5,7 @@ Exercício 1 — Sistema de Emissão de Apólices
 CONTEXTO DE NEGÓCIO
 ------------------------------------------------------------
 Uma seguradora de médio porte decidiu substituir a rotina de emissão de apólices, hoje resolvida por uma sequência de estruturas condicionais que cresce a cada produto novo lançado. A área de tecnologia recebeu da diretoria comercial a especificação de quatro linhas de produto (Automóvel, Residencial, Vida e Viagem) e um requisito recorrente nas revisões de arquitetura: a inclusão de uma quinta linha de produto, já em estudo pelo time comercial, não pode exigir alteração de nenhuma classe em produção, apenas a adição de classes novas.
-
+ 
 A especificação a seguir descreve as regras de cálculo de prêmio, as validações obrigatórias de cobertura e a documentação exigida para cada linha de produto.
 
 

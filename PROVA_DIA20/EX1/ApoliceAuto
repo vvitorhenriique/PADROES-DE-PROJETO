@@ -1,0 +1,43 @@
+public class ApoliceAuto extends Apolice{
+    private double FIPE; //tabela fipe do veicxulo
+    private int idade; //idade do contudor
+    private int tempoHabilitacao; //quanto tempo o motorista tem carteira
+    private double terceiro; //cobertura de no minimo 50000
+
+    ApoliceAuto(String segurado, double fipe, int idade, int tempoHabilitacao, double terceiro){
+        super(segurado);
+        this.fipe = fipe;
+        this.idade = idade;
+        this.tempoHabilitacao = tempoHabilitacao;
+        this.terceiro = terceiro;
+    }
+
+    @Override
+    public double calcularPremio(){
+        double base = (fipe * 0.08) /12;
+
+        if(idade < 25){
+            base = base *1.30;
+        }
+
+        if(tempoHabilitacao < 2){
+            base *= 1.20;
+        }
+
+        return base;
+    }
+
+    @Override
+    public boolean calcContratado(){
+        if(terceiro < 5000){
+            return "Contratação inválida";
+        }
+
+        else{
+            return terceiro;
+        }
+    }
+
+    @Override
+    public
+}
