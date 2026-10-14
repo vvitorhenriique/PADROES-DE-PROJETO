@@ -39,5 +39,12 @@ public class ApoliceAuto extends Apolice{
     }
 
     @Override
-    public
+    public String listDocumentos(){
+        listDocumentos = new ArrayList<>();
+        for(int i = 0; i < listDocumentos.size(); i++){
+            documentos.add("CNH"); //CRLV e comprovante de residência.
+            documentos.add("CRLV");
+            documentos.add("Comprovante de residência");
+        }
+    }
 }
