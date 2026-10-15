@@ -1,5 +1,5 @@
 public class ApoliceAuto extends Apolice{
-    private double FIPE; //tabela fipe do veicxulo
+    private double fipe; //tabela fipe do veicxulo
     private int idade; //idade do contudor
     private int tempoHabilitacao; //quanto tempo o motorista tem carteira
     private double terceiro; //cobertura de no minimo 50000
@@ -13,7 +13,7 @@ public class ApoliceAuto extends Apolice{
     }
 
     @Override
-    public double calcularPremio(){
+    public double calcPremio(){
         double base = (fipe * 0.08) /12;
 
         if(idade < 25){
