@@ -11,10 +11,8 @@ public class FreteTerrestre extends Frete{
     }
 
     @Override 
-    public void gerarRecibo(double peso){
-        System.out.println("---RESUMO DO PEDIDO---");
-        System.out.printf("Peso: %1.f", peso);
-        System.out.printf("Tipo de Frete: Terrestre");
-        System.out.printf("Valor final: R$%.2f", calcCusto(peso));
+    public String gerarRecibo(double peso){
+        System.out.print("\n\n");
+        return "Frete Terrestre | Peso: " +peso+ " kg | Custo R$: " + calcCusto(peso);
     }
 }
