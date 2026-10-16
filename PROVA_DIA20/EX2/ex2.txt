@@ -1,0 +1,59 @@
+Sistema de Biblioteca — Estilo "Apólice" 📚
+Mesmo formato, mesmo nível. Segue o molde que você já domina.
+
+Contexto de negócio
+Uma biblioteca universitária precisa reformular o sistema de empréstimo de materiais. Hoje o código usa if/else para decidir as regras de cada tipo de material, e a diretoria exige que novos tipos possam ser adicionados sem alterar classes existentes — apenas adicionando classes novas.
+
+Especificação funcional
+RF01 — Livro
+O prazo de empréstimo é de 14 dias. Livros com mais de 500 páginas ganham +7 dias de prazo. A multa por dia de atraso é R$ 1,50.
+
+RF02 — Revista
+O prazo de empréstimo é de 7 dias. Revistas não têm prazo estendido. A multa por dia de atraso é R$ 0,50.
+
+RF03 — DVD
+O prazo de empréstimo é de 3 dias. DVDs de lançamento (boolean) ganham +2 dias de prazo. A multa por dia de atraso é R$ 3,00.
+
+Requisitos não funcionais
+RNF01 — novos tipos de material devem poder ser adicionados sem alterar classes existentes (Open/Closed).
+
+RNF02 — o sistema deve gerar, para todo empréstimo, um recibo padronizado contendo tipo do material, prazo em dias e valor da multa por dia.
+
+RNF03 — a classe cliente não pode usar if/switch para decidir o tipo de material.
+
+Tarefa
+Implemente usando Factory Method (GoF):
+
+Classe abstrata Material com:
+
+calcularPrazo() → retorna int (dias)
+
+calcularMulta(int diasAtraso) → retorna double
+
+gerarRecibo() → retorna String
+
+Classes concretas Livro, Revista, DVD extends Material.
+
+Classe abstrata CriadorMaterial com:
+
+método abstrato criarMaterial()
+
+método concreto processar() que usa apenas a abstração Material
+
+Subclasses concretas CriadorLivro, CriadorRevista, CriadorDVD.
+
+Classe Main que processe um material de cada tipo e imprima o recibo.
+
+Entregáveis
+Implementação Java completa e compilável.
+
+Classe Main que emita pelo menos um material de cada tipo e imprima o recibo.
+
+Critérios de avaliação
+Aplicação correta do Factory Method, com o método fábrica isolado nas subclasses de criador.
+
+Implementação fiel das regras de RF01, RF02, RF03.
+
+Ausência de if/switch decidindo tipo de material no cliente ou no criador abstrato.
+
+Código compilável e executável.
