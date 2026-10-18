@@ -9,7 +9,7 @@ RF01 — Livro
 O prazo de empréstimo é de 14 dias. Livros com mais de 500 páginas ganham +7 dias de prazo. A multa por dia de atraso é R$ 1,50.
 
 RF02 — Revista
-O prazo de empréstimo é de 7 dias. Revistas não têm prazo estendido. A multa por dia de atraso é R$ 0,50.
+O prazo de empréstimo é de 7 dias. Revistas não têm prazo estendido. A multa por dia de atraso é R$ 0,50. 
 
 RF03 — DVD
 O prazo de empréstimo é de 3 dias. DVDs de lançamento (boolean) ganham +2 dias de prazo. A multa por dia de atraso é R$ 3,00.
