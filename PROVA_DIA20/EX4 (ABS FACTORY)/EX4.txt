@@ -1,0 +1,122 @@
+Abstract Factory — Exercício 2 (mesmo nível) 🎮
+Agora que você já viu o Tema, vamos fazer um de jogo. Mesma estrutura, domínio diferente. Faz sozinho pra ver se fixou.
+
+Contexto de negócio
+Uma empresa está desenvolvendo um jogo de estratégia que terá duas facções: Humanos e Orcs. Cada facção possui três tipos de unidade: Guerreiro, Arqueiro e Mago.
+
+O problema: o jogador pode escolher a facção no início da partida, mas não pode misturar unidades de facções diferentes (ex: Guerreiro Humano + Arqueiro Orc quebra o balanceamento do jogo).
+
+O sistema deve garantir que todas as unidades de um exército sejam da mesma facção.
+
+Especificação funcional
+RF01 — Unidades da facção Humanos
+Guerreiro: "Guerreiro Humano ataca com espada (dano: 15)"
+
+Arqueiro: "Arqueiro Humano atira flecha (dano: 10)"
+
+Mago: "Mago Humano lança bola de fogo (dano: 25)"
+
+RF02 — Unidades da facção Orcs
+Guerreiro: "Guerreiro Orc ataca com machado (dano: 18)"
+
+Arqueiro: "Arqueiro Orc atira flecha envenenada (dano: 12)"
+
+Mago: "Mago Orc lança maldição (dano: 30)"
+
+Requisitos não funcionais
+RNF01 — novas facções devem poder ser adicionadas sem alterar classes existentes (Open/Closed).
+
+RNF02 — a classe Exercito não pode usar if/switch para decidir a facção.
+
+RNF03 — deve ser estruturalmente impossível misturar unidades de facções diferentes no mesmo exército.
+
+Tarefa
+Implemente usando Abstract Factory:
+
+3 interfaces de produto: Guerreiro, Arqueiro, Mago (cada uma com atacar())
+
+2 classes concretas por interface (uma pra Humanos, uma pra Orcs) → 6 produtos
+
+1 interface FabricaExercito com os 3 métodos de criação
+
+2 fábricas concretas: FabricaHumanos, FabricaOrcs
+
+1 classe cliente Exercito que recebe uma FabricaExercito no construtor e cria as 3 unidades
+
+1 classe Main que cria um Exercito com FabricaHumanos, exibe as unidades, e depois faz o mesmo com FabricaOrcs
+
+Saída esperada
+text
+=== EXÉRCITO HUMANOS ===
+Guerreiro Humano ataca com espada (dano: 15)
+Arqueiro Humano atira flecha (dano: 10)
+Mago Humano lança bola de fogo (dano: 25)
+
+=== EXÉRCITO ORCS ===
+Guerreiro Orc ataca com machado (dano: 18)
+Arqueiro Orc atira flecha envenenada (dano: 12)
+Mago Orc lança maldição (dano: 30)
+Dica pra não travar
+A estrutura é idêntica ao Tema (UI):
+
+Tema (UI)	Jogo
+Botao	Guerreiro
+Janela	Arqueiro
+Menu	Mago
+BotaoClaro, BotaoEscuro	GuerreiroHumano, GuerreiroOrc
+FabricaTema	FabricaExercito
+FabricaClaro, FabricaEscuro	FabricaHumanos, FabricaOrcs
+Aplicacao	Exercito
+É literalmente o mesmo molde. Só muda o nome das classes e o texto do System.out.println.
+
+Estrutura esperada
+text
+Guerreiro (interface) → atacar()
+├── GuerreiroHumano
+└── GuerreiroOrc
+
+Arqueiro (interface) → atacar()
+├── ArqueiroHumano
+└── ArqueiroOrc
+
+Mago (interface) → atacar()
+├── MagoHumano
+└── MagoOrc
+
+FabricaExercito (interface)
+├── criarGuerreiro(): Guerreiro
+├── criarArqueiro(): Arqueiro
+└── criarMago(): Mago
+
+FabricaHumanos implements FabricaExercito
+FabricaOrcs implements FabricaExercito
+
+Exercito (recebe FabricaExercito)
+└── Guerreiro g; Arqueiro a; Mago m;
+Ordem de criação (não pula)
+Guerreiro, Arqueiro, Mago (interfaces)
+
+GuerreiroHumano, ArqueiroHumano, MagoHumano
+
+GuerreiroOrc, ArqueiroOrc, MagoOrc
+
+FabricaExercito
+
+FabricaHumanos, FabricaOrcs
+
+Exercito
+
+Main
+
+Compila a cada 2–3 arquivos. Não deixa acumular erro.
+
+Bônus (só se terminar rápido)
+Adicione uma terceira facção: Elfos. Você precisa criar:
+
+GuerreiroElfo, ArqueiroElfo, MagoElfo
+
+FabricaElfos
+
+E NÃO pode mexer em nenhuma classe existente. Se você conseguir, entendeu o Open/Closed do Abstract Factory.
+
+Faz agora. Sem olhar o Tema. Se travar, me m
