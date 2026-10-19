@@ -1,5 +1,11 @@
 public class Revista extends Material {
     
+    protected int atraso;
+
+    public Revista (int atraso){
+        this.atraso = atraso;
+    }
+
     @Override
     public int calcPrazo() {
         int prazo = 7;
@@ -13,6 +19,6 @@ public class Revista extends Material {
 
     @Override
     public String gerarResumo() {
-        return "Revista | Prazo: " +calcPrazo()+ "dias | Multa por dia 0,50";
+        return "Revista | Prazo: " +calcPrazo()+ "dias | Multa total: " +calcMulta(atraso);
     }
 }

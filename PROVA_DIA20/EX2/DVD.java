@@ -1,8 +1,10 @@
 public class DVD extends Material {
     public boolean lancamento; //incialmente é falso
+    private int atraso;
 
-    public DVD (boolean lancamento){
+    public DVD (boolean lancamento, int atraso){
         this.lancamento = lancamento;
+        this.atraso = atraso;
     }
 
     @Override
@@ -21,7 +23,7 @@ public class DVD extends Material {
 
     @Override
     public String gerarResumo() {
-        return "DVD | Prazo: " +calcPrazo()+ "dias | Multa por dia R$3,00";
+        return "DVD | Prazo: " +calcPrazo()+ "dias | Multa total: R$" +calcMulta(atraso);
     }
 
 }

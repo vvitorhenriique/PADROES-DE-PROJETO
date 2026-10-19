@@ -4,8 +4,9 @@ public class Livro extends Material {
     protected int paginas; //quyantidade de paginas qut etm o livro
     protected int atraso; //dias que estão atrasados
 
-    public Livro(int paginas){
+    public Livro(int paginas, int atraso){
         this.paginas = paginas;
+        this.atraso = atraso;
 
     }
 
