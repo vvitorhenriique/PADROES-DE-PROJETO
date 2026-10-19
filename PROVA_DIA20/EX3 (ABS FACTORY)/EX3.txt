@@ -1,0 +1,147 @@
+"Sistema de Tema (UI)"
+Uma empresa de software precisa que seu sistema suporte dois temas visuais: Claro e Escuro. Cada tema tem três componentes: Botao, Janela e Menu. Cada tema renderiza os componentes de forma diferente. O sistema deve poder trocar de tema sem alterar o código cliente.
+
+Estrutura (Abstract Factory)
+text
+┌─────────────────────────┐
+│     <<interface>>       │
+│        Botao            │
+├─────────────────────────┤
+│ + render(): void        │
+└─────────────────────────┘
+        ▲
+   ┌────┼────┐
+   │         │
+┌────────┐ ┌────────┐
+│BotaoClaro│ │BotaoEscuro│
+└────────┘ └────────┘
+
+┌─────────────────────────┐
+│     <<interface>>       │
+│        Janela           │
+├─────────────────────────┤
+│ + abrir(): void         │
+└─────────────────────────┘
+        ▲
+   ┌────┼────┐
+   │         │
+┌────────┐ ┌────────┐
+│JanelaClaro│ │JanelaEscuro│
+└────────┘ └────────┘
+
+┌─────────────────────────┐
+│     <<interface>>       │
+│        Menu             │
+├─────────────────────────┤
+│ + exibir(): void        │
+└─────────────────────────┘
+        ▲
+   ┌────┼────┐
+   │         │
+┌────────┐ ┌────────┐
+│MenuClaro│ │MenuEscuro│
+└────────┘ └────────┘
+
+┌─────────────────────────┐
+│     <<interface>>       │
+│       FabricaTema       │
+├─────────────────────────┤
+│ + criarBotao(): Botao   │
+│ + criarJanela(): Janela │
+│ + criarMenu(): Menu     │
+└─────────────────────────┘
+        ▲
+   ┌────┼────┐
+   │         │
+┌────────────┐ ┌────────────┐
+│FabricaClaro│ │FabricaEscuro│
+├────────────┤ ├────────────┤
+│+criarBotao │ │+criarBotao │
+│+criarJanela│ │+criarJanela│
+│+criarMenu  │ │+criarMenu  │
+└────────────┘ └────────────┘
+Tarefa
+Crie as 3 interfaces de produto: Botao, Janela, Menu
+
+Crie as 6 classes concretas: BotaoClaro, BotaoEscuro, JanelaClaro, JanelaEscuro, MenuClaro, MenuEscuro
+
+Crie a interface FabricaTema com os 3 métodos de criação
+
+Crie as 2 fábricas concretas: FabricaClaro, FabricaEscuro
+
+Crie um cliente Aplicacao que recebe uma FabricaTema no construtor e usa os componentes criados por ela
+
+Crie o Main que instancia uma FabricaClaro, passa pro Aplicacao, e depois faz o mesmo com FabricaEscuro
+
+Regras de negócio (simples)
+BotaoClaro: imprime "Botão Claro renderizado"
+
+BotaoEscuro: imprime "Botão Escuro renderizado"
+
+JanelaClaro: imprime "Janela Clara aberta"
+
+JanelaEscuro: imprime "Janela Escura aberta"
+
+MenuClaro: imprime "Menu Claro exibido"
+
+MenuEscuro: imprime "Menu Escuro exibido"
+
+Classe Aplicacao (dica)
+java
+public class Aplicacao {
+    private Botao botao;
+    private Janela janela;
+    private Menu menu;
+    
+    public Aplicacao(FabricaTema fabrica) {
+        this.botao = fabrica.criarBotao();
+        this.janela = fabrica.criarJanela();
+        this.menu = fabrica.criarMenu();
+    }
+    
+    public void renderizar() {
+        botao.render();
+        janela.abrir();
+        menu.exibir();
+    }
+}
+Aqui tá a mágica: o Aplicacao não sabe se é Claro ou Escuro. Ele recebe uma FabricaTema e usa. Trocar de tema = passar outra fábrica.
+
+Main esperado
+java
+public class Main {
+    public static void main(String[] args) {
+        FabricaTema claro = new FabricaClaro();
+        Aplicacao app1 = new Aplicacao(claro);
+        app1.renderizar();
+        
+        System.out.println("---");
+        
+        FabricaTema escuro = new FabricaEscuro();
+        Aplicacao app2 = new Aplicacao(escuro);
+        app2.renderizar();
+    }
+}
+Saída:
+
+text
+Botão Claro renderizado
+Janela Clara aberta
+Menu Claro exibido
+---
+Botão Escuro renderizado
+Janela Escura aberta
+Menu Escuro exibido
+Dica pra não travar
+Faz uma interface por vez (Botao, depois Janela, depois Menu)
+
+Depois as classes concretas (2 pra cada interface)
+
+Depois a FabricaTema (interface com 3 métodos)
+
+Depois as 2 fábricas concretas
+
+Por último o Aplicacao e o Main
+
+Não tenta fazer tudo de uma vez. Um arquivo por vez, compila, próximo.
+
