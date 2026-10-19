@@ -1,5 +1,5 @@
 Abstract Factory — Exercício 2 (mesmo nível) 🎮
-Agora que você já viu o Tema, vamos fazer um de jogo. Mesma estrutura, domínio diferente. Faz sozinho pra ver se fixou.
+Agora que você já viu o Tema, vamos fazer um de jogo. Mesma estrutura, domínio diferente. Faz sozinho pra ver se fixou. 
 
 Contexto de negócio
 Uma empresa está desenvolvendo um jogo de estratégia que terá duas facções: Humanos e Orcs. Cada facção possui três tipos de unidade: Guerreiro, Arqueiro e Mago.
