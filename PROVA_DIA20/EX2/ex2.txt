@@ -1,6 +1,6 @@
 Sistema de Biblioteca — Estilo "Apólice" 📚
 Mesmo formato, mesmo nível. Segue o molde que você já domina.
-
+ 
 Contexto de negócio
 Uma biblioteca universitária precisa reformular o sistema de empréstimo de materiais. Hoje o código usa if/else para decidir as regras de cada tipo de material, e a diretoria exige que novos tipos possam ser adicionados sem alterar classes existentes — apenas adicionando classes novas.
 
