@@ -1,0 +1,41 @@
+// 1) Interfaces dos produtos
+public interface ProdutoA { void metodoA(); }
+public interface ProdutoB { void metodoB(); }
+public interface ProdutoC { void metodoC(); }
+
+// 2) Produtos concretos (2 por interface, um por família)
+public class ProdutoA1 implements ProdutoA { public void metodoA() { System.out.println("texto EXATO do enunciado"); } }
+public class ProdutoA2 implements ProdutoA { public void metodoA() { System.out.println("texto EXATO do enunciado"); } }
+// ... idem para B1/B2 e C1/C2
+
+// 3) Fábrica abstrata: um método criar para cada produto
+public interface Fabrica {
+    ProdutoA criarA();
+    ProdutoB criarB();
+    ProdutoC criarC();
+}
+
+// 4) Fábricas concretas: uma por família
+public class Fabrica1 implements Fabrica {
+    public ProdutoA criarA() { return new ProdutoA1(); }
+    public ProdutoB criarB() { return new ProdutoB1(); }
+    public ProdutoC criarC() { return new ProdutoC1(); }
+}
+// Fabrica2 igual, com os produtos 2
+
+// 5) Cliente: recebe a fábrica no construtor e só conhece interfaces
+public class Cliente {
+    private ProdutoA a; private ProdutoB b; private ProdutoC c;
+    public Cliente(Fabrica f) { a = f.criarA(); b = f.criarB(); c = f.criarC(); }
+    public void executar() { a.metodoA(); b.metodoB(); c.metodoC(); }
+}
+
+// 6) Main: declare sempre pela interface
+public class Main {
+    public static void main(String[] args) {
+        Fabrica f1 = new Fabrica1();
+        new Cliente(f1).executar();
+        Fabrica f2 = new Fabrica2();
+        new Cliente(f2).executar();
+    }
+}

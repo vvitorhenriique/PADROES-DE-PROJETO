@@ -1,0 +1,36 @@
+// 1) Produto abstrato (use os nomes EXATOS dos métodos do enunciado)
+public abstract class Produto {
+    public abstract double calcular();
+    public abstract boolean validar();
+    public abstract String gerarResumo();
+}
+
+// 2) Produtos concretos
+public class ProdutoX extends Produto { /* regras do tipo X */ }
+
+// 3) Criador abstrato: método fábrica abstrato + processamento final
+public abstract class Criador {
+    public abstract Produto criarProduto();
+
+    public final String processar() {
+        Produto p = criarProduto();   // só usa a abstração
+        // chamar calcular(), validar(), etc. e devolver gerarResumo()
+        return p.gerarResumo();
+    }
+}
+
+// 4) Criadores concretos: só o método fábrica
+public class CriadorX extends Criador {
+    public Produto criarProduto() { return new ProdutoX(/* dados */); }
+}
+
+// 5) Cliente com Map, sem if/switch para decidir tipo
+public class Cliente {
+    private Map<String, Criador> criadores = new HashMap<>();
+    public void registrar(String tipo, Criador c) { criadores.put(tipo, c); }
+    public String solicitar(String tipo) {
+        Criador c = criadores.get(tipo);
+        if (c == null) return "ERRO: tipo '" + tipo + "' não suportado";
+        return c.processar();
+    }
+}
