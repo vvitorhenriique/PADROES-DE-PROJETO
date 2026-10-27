@@ -2,7 +2,7 @@
 
 public class gatewayLegado{
     //validar cartão
-    public boolean validarCartão(String cartao){
+    public boolean validarCartao(String cartao){
         return cartao != null && cartao.lenght(16);
     }
 
