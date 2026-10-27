@@ -1,0 +1,15 @@
+adapter serve para o carregador do modelo americano funcionar no brasil.
+
+Tenho uma classe incompatível no cliente, já existe e ficou incompatível;
+
+Cliente -> quer java
+GPT -> manda python
+Gemini -> manda C;
+
+então eu crio o adaptador no gpt e no gemini para sair java.
+
+Adapter usa muito junto de factory e Strategy.
+
+Padrão ESTRUTURAL permitindo tradução entre interfaces incompativeis.
+Integre para evitar de ter que mexer em código antigo.
+

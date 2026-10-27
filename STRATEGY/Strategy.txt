@@ -1,0 +1,19 @@
+Eu tenho 1 objetivo único e diferentes maneiras de chegar ao mesmo objetivo;
+
+Strategy é comportamental, não estrutural.
+Enquanto executa, posso alterar o comportamento dele.
+
+Ao invés de usar IFs, determino qual algoritmo usar.
+
+BENEFICIOS:
+Flexivel;
+Cliente não sabe oq vai ser executado;
+Não preciso modificar códigos anteriores.
+Pode ser usado no lugar das DUAS FÁBRICAS.
+Muito usado;
+
+TEMOS INTERFACE -> EXECUTE();
+Classes de +, - e / implementando strategy
+Contexto: Incorporar diferentes estratégias, pois todas as classes tem o execute();
+Contexto precisa de strategia, instanciando no construtor dela, tendo um metodo pra executar a estrategia.
+
