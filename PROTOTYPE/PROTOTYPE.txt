@@ -1,0 +1,9 @@
+Clona uma instância ou estados ou até a clonagem profunda
+
+Todos os processos não precisam ser executados novamente, se o dado já foi alcançado.
+
+criar um objeto é caro, custa poder processamental.
+Cada vez que eu for realizar tal tarefa, é possível que algum objeto tenha feito parte dessa tarefa.
+
+Usa uma instancia existente, chamada de PROTÓTIPO;
+
