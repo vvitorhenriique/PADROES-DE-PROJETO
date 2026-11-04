@@ -1,0 +1,36 @@
+Enunciado 1 — Configuração global do sistema
+Contexto de negócio
+Um sistema de gestão escolar precisa ler configurações (nome da instituição, ano letivo, caminho do banco) de um arquivo .properties. Várias partes do sistema (telas, relatórios, serviços) precisam acessar essas configurações. Hoje, cada parte cria sua própria instância de Configuracao, o que causa leituras repetidas do arquivo e inconsistência quando uma parte altera um valor e outra não vê.
+
+Requisitos funcionais
+
+RF01: deve existir uma classe Configuracao com os campos nomeInstituicao, anoLetivo, caminhoBanco.
+
+RF02: deve ser possível obter a configuração em qualquer parte do sistema por um método de acesso.
+
+RF03: deve ser possível alterar os valores da configuração (ex.: mudar o ano letivo).
+
+RF04: o cliente deve demonstrar que duas chamadas ao método de acesso retornam a mesma configuração (alterar em uma reflete na outra).
+
+Requisitos não funcionais
+
+RNF01: deve existir no máximo uma instância de Configuracao em toda a aplicação.
+
+RNF02: o arquivo de configuração deve ser lido uma única vez (simule a leitura com um System.out.println("Lendo arquivo...") no construtor — se aparecer mais de uma vez, o padrão está errado).
+
+RNF03: o código cliente não pode usar new Configuracao().
+
+RNF04: o acesso deve ser global (qualquer parte do código consegue obter a instância sem recebê-la como parâmetro).
+
+Tarefa
+Implemente em Java a classe Configuracao e uma Main que:
+
+Obtém a configuração duas vezes em variáveis diferentes.
+
+Altera o ano letivo em uma.
+
+Imprime o ano letivo na outra (deve refletir a alteração).
+
+Imprime se as duas referências são iguais (==).
+
+Mostra que a mensagem "Lendo arquivo..." aparece apenas uma vez.

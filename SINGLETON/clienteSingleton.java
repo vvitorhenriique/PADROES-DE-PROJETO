@@ -4,7 +4,7 @@ public class clienteSingleton {
     public String nome;
     public String email;
     //construtor privado
-
+ 
     private clienteSingleton(){
 
     }
