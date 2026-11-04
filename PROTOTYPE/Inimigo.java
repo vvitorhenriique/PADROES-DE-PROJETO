@@ -4,7 +4,7 @@ import java.util.*;
 public class Inimigo implements Prototipo <Inimigo>{
     public String nome;
     public int vida;
-    public int velocidade;
+    public int velocidade; 
     public List<String> habilidade = new ArrayList<>();
     public int x, y;
 

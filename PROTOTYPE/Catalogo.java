@@ -9,7 +9,7 @@ public class Catalogo{
 
     public Inimigo criar(String chave){
         Inimigo proto = this.prototipos.get(chave);
-        if(proto == null){
+        if(proto == null){ 
             throw new IllegalArgumentException("Inimigo não encontrado: " + chave);
         }
         return proto.clonar();
