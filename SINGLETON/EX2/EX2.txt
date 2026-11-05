@@ -1,0 +1,35 @@
+2 — Logger da aplicação
+Contexto de negócio
+Uma aplicação de vendas precisa registrar eventos (venda realizada, erro de pagamento, login). Hoje, cada classe cria seu próprio Logger, o que gera arquivos de log duplicados e ordem inconsistente das mensagens. A equipe decidiu centralizar o log em um único componente.
+
+Requisitos funcionais
+
+RF01: deve existir uma classe Logger com o método registrar(String mensagem).
+
+RF02: registrar deve imprimir a mensagem com um prefixo [LOG] (simula gravação em arquivo).
+
+RF03: deve ser possível obter o Logger em qualquer parte do sistema.
+
+RF04: o cliente deve demonstrar que dois Logger obtidos em pontos diferentes são o mesmo objeto.
+
+Requisitos não funcionais
+
+RNF01: deve existir uma única instância de Logger em toda a aplicação.
+
+RNF02: o cliente não pode usar new Logger().
+
+RNF03: o acesso deve ser global.
+
+RNF04: a criação deve ser sob demanda (a instância só é criada na primeira chamada ao método de acesso — simule com System.out.println("Criando Logger...") no construtor; deve aparecer uma vez só, e só quando o método for chamado pela primeira vez).
+
+Tarefa
+Implemente em Java a classe Logger e uma Main que:
+
+Obtém o Logger duas vezes em variáveis diferentes.
+
+Registra mensagens por ambas as referências.
+
+Imprime se são iguais (==).
+
+Mostra que "Criando Logger..." aparece apenas uma vez.
+
