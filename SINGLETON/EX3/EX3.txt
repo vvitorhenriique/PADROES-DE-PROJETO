@@ -1,0 +1,40 @@
+3 — Gerenciador de conexão com banco
+Contexto de negócio
+Um sistema de biblioteca acessa um banco de dados. Abrir conexão é caro (handshake, autenticação). Hoje, cada DAO (LivroDAO, UsuarioDAO, EmprestimoDAO) abre sua própria conexão, o que esgota o pool e trava o sistema. A equipe decidiu usar uma única conexão compartilhada gerenciada por um componente central.
+
+Requisitos funcionais
+
+RF01: deve existir uma classe ConexaoBD com os campos url, usuario, conectada (boolean).
+
+RF02: deve existir um método conectar() que muda conectada para true e imprime "Conectado a " + url.
+
+RF03: deve existir um método desconectar() que muda conectada para false.
+
+RF04: deve ser possível obter a conexão em qualquer parte do sistema.
+
+RF05: o cliente deve demonstrar que dois DAOs que obtêm a conexão compartilham o mesmo estado (conectada).
+
+Requisitos não funcionais
+
+RNF01: deve existir uma única instância de ConexaoBD.
+
+RNF02: o cliente não pode usar new ConexaoBD().
+
+RNF03: o acesso deve ser global.
+
+RNF04: a instância deve ser criada sob demanda (primeira chamada).
+
+RNF05: thread-safe — se duas threads chamarem o método de acesso ao mesmo tempo, ainda deve existir uma única instância. (Dica: pense em synchronized ou no padrão holder — decida e justifique no código.)
+
+Tarefa
+Implemente em Java a classe ConexaoBD e uma Main que:
+
+Simula dois "DAOs" obtendo a conexão.
+
+Um DAO chama conectar().
+
+O outro DAO imprime conectada (deve ser true, provando que é a mesma conexão).
+
+Imprime se as referências são iguais (==).
+
+(Para o RNF05) Cria 2 threads que chamam o método de acesso e imprime se obtiveram a mesma instância.
