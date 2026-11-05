@@ -1,13 +1,13 @@
 package EX1;
 
 public class Configuracao {
-    public static Configuracao instancia;
+    private static Configuracao instancia;
     public String nome;
     public int ano;
     public String caminho; //caminho do banco
 
     private Configuracao(){
-
+        System.out.println("Lendo arquivo...");
     }
 
     public static Configuracao getInstance(){
@@ -18,15 +18,15 @@ public class Configuracao {
         return instancia;
     }
 
-    public void getNome(String nome){
+    public void setNome(String nome){
         this.nome = nome;
     }
 
-    public void getAno(int ano){
+    public void setAno(int ano){
         this.ano = ano;
     }
 
-    public void getCaminho(String caminho){
+    public void setCaminho(String caminho){
         this.caminho = caminho;
     }
 
