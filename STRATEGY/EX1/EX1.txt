@@ -1,0 +1,38 @@
+1 — Cálculo de frete (o exemplo que você já viu)
+Contexto de negócio
+Um e-commerce vende produtos e oferece três modalidades de frete: Sedex, PAC e Retirada na loja. Hoje, o cálculo do frete fica em uma única classe Carrinho que usa if/else para decidir a fórmula conforme o tipo escolhido. Cada novo modal (ex.: Motoboy) obriga a alterar e testar novamente essa classe. A equipe decidiu reescrever o cálculo.
+
+O procedimento é o mesmo para todos os modais: receber o peso e o valor da compra, e devolver o valor do frete. O que varia é apenas a fórmula.
+
+Requisitos funcionais
+
+RF01 (Sedex): frete = peso * 10 + valor * 0.05.
+
+RF02 (PAC): frete = peso * 5.
+
+RF03 (Retirada): frete = 0.
+
+RF04: o Carrinho deve calcular o frete com qualquer modalidade, e deve ser possível trocar a modalidade em tempo de execução.
+
+Requisitos não funcionais
+
+RNF01: o algoritmo de cada modal deve ficar isolado em sua própria classe.
+
+RNF02: o Carrinho não pode usar if/switch — deve delegar.
+
+RNF03: novo modal (ex.: Motoboy) = apenas uma nova classe, sem alterar Carrinho nem as existentes.
+
+RNF04: o Carrinho trabalha apenas com a abstração, não com as classes concretas.
+
+RNF05: o cliente escolhe a modalidade (no construtor ou via setter), não o Carrinho.
+
+Tarefa
+Main que:
+
+Cria Carrinho com Sedex, calcula para peso 2, valor 100 → 25.0.
+
+Troca para PAC, calcula → 10.0.
+
+Troca para Retirada, calcula → 0.0.
+
+Imprime os três resultados.
