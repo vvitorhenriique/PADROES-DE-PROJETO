@@ -1,0 +1,39 @@
+2 — Formas de pagamento
+Contexto de negócio
+Uma loja virtual aceita três formas de pagamento: Cartão de crédito, Boleto e Pix. Hoje, o checkout tem um if/else enorme que decide como calcular o total (juros, desconto, parcelas). Cada nova forma de pagamento (ex.: Criptomoeda) obriga a alterar o checkout. A equipe decidiu isolar cada forma de pagamento.
+
+O procedimento é o mesmo: receber o valor base e devolver o valor final a pagar. O que varia é como o valor é ajustado (juros, desconto, parcelamento).
+
+Requisitos funcionais
+
+RF01 (Cartão): valor final = valorBase * 1.05 (5% de juros).
+
+RF02 (Boleto): valor final = valorBase (sem juros, sem desconto).
+
+RF03 (Pix): valor final = valorBase * 0.90 (10% de desconto).
+
+RF04: o Checkout deve calcular o total com qualquer forma, e deve ser possível trocar a forma em tempo de execução.
+
+Requisitos não funcionais
+
+RNF01: o cálculo de cada forma deve ficar isolado em sua própria classe.
+
+RNF02: o Checkout não pode usar if/switch — deve delegar.
+
+RNF03: nova forma (ex.: Criptomoeda) = apenas uma nova classe, sem alterar Checkout nem as existentes.
+
+RNF04: o Checkout trabalha apenas com a abstração.
+
+RNF05: o cliente escolhe a forma (no construtor ou via setter).
+
+Tarefa
+Main que:
+
+Cria Checkout com Cartão, calcula para valor 200 → 210.0.
+
+Troca para Boleto, calcula → 200.0.
+
+Troca para Pix, calcula → 180.0.
+
+Imprime os três resultados.
+

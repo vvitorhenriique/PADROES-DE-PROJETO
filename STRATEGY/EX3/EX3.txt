@@ -1,0 +1,38 @@
+3 — Compressão de arquivos
+Contexto de negócio
+Um sistema de backup precisa comprimir arquivos antes de enviá-los para a nuvem. Hoje, a classe Backup tem if/else para escolher o algoritmo (ZIP, GZIP, RAR). Cada novo algoritmo (ex.: 7z) obriga a alterar Backup. A equipe decidiu isolar cada algoritmo.
+
+O procedimento é o mesmo: receber o nome do arquivo e o tamanho em MB, e devolver o tamanho estimado após a compressão. O que varia é a taxa de compressão de cada algoritmo.
+
+Requisitos funcionais
+
+RF01 (ZIP): tamanho final = tamanho * 0.60 (60% do original).
+
+RF02 (GZIP): tamanho final = tamanho * 0.50.
+
+RF03 (RAR): tamanho final = tamanho * 0.40.
+
+RF04: o Backup deve calcular o tamanho com qualquer algoritmo, e deve ser possível trocar o algoritmo em tempo de execução.
+
+Requisitos não funcionais
+
+RNF01: o cálculo de cada algoritmo deve ficar isolado em sua própria classe.
+
+RNF02: o Backup não pode usar if/switch — deve delegar.
+
+RNF03: novo algoritmo (ex.: 7z) = apenas uma nova classe, sem alterar Backup nem as existentes.
+
+RNF04: o Backup trabalha apenas com a abstração.
+
+RNF05: o cliente escolhe o algoritmo (no construtor ou via setter).
+
+Tarefa
+Main que:
+
+Cria Backup com ZIP, calcula para 100 MB → 60.0.
+
+Troca para GZIP, calcula → 50.0.
+
+Troca para RAR, calcula → 40.0.
+
+Imprime os três resultados.
